@@ -4,14 +4,16 @@ aliases:
     command: |
       docker build -t aeternas/swadeshness-nginx:latest && \
       docker puch aeternas/swadeshness:latest
+  - &setup-remote-docker
+    - setup_remote_docker:
+        docker_layer_caching: true
 version: 2
 jobs:
   build:
     docker:
-      - image: debian:stretch
+      - image: golang:1.11
 
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
+      - *setup-remote-docker
       - run: *containerize
