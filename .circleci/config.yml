@@ -2,7 +2,7 @@ aliases:
   - &containerize
     name: Containerize
     command: |
-      docker build -t aeternas/swadeshness-nginx:latest && \
+      docker build -t aeternas/swadeshness-nginx:latest . && \
       docker push aeternas/swadeshness:latest
   - &setup-remote-docker
     setup_remote_docker:
