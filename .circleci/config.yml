@@ -1,3 +1,9 @@
+aliases:
+  - &containerize
+    name: Containerize
+    command: |
+      docker build -t aeternas/swadeshness-nginx:latest && \
+      docker puch aeternas/swadeshness:latest
 version: 2
 jobs:
   build:
@@ -6,11 +12,4 @@ jobs:
 
     steps:
       - checkout
-
-      - run:
-          name: Greeting
-          command: echo Hello, world.
-
-      - run:
-          name: Print the Current Time
-          command: date
+      - *containerize
