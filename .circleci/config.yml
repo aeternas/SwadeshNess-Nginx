@@ -12,4 +12,4 @@ jobs:
 
     steps:
       - checkout
-      - *containerize
+      - run: *containerize
