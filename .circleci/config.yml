@@ -5,8 +5,8 @@ aliases:
       docker build -t aeternas/swadeshness-nginx:latest && \
       docker puch aeternas/swadeshness:latest
   - &setup-remote-docker
-    - setup_remote_docker:
-        docker_layer_caching: true
+    setup_remote_docker:
+      docker_layer_caching: true
 version: 2
 jobs:
   build:
