@@ -2,6 +2,7 @@ aliases:
   - &containerize
     name: Containerize
     command: |
+      docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && \
       docker build -t aeternas/swadeshness-nginx:latest . && \
       docker push aeternas/swadeshness-nginx:latest
   - &setup-remote-docker
