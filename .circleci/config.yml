@@ -2,7 +2,8 @@ aliases:
   - &containerize
     name: Containerize
     command: |
-      docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && \
+      echo $DOCKER_PASSWORD > docker_passwd && \
+      docker login -u $DOCKER_USERNAME --password-stdin < docker_passwd && rm docker_passwd && \
       docker build -t aeternas/swadeshness-nginx:$CIRCLE_BRANCH . && \
       docker push aeternas/swadeshness-nginx:$CIRCLE_BRANCH
   - &setup-remote-docker
