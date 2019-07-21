@@ -19,3 +19,8 @@ jobs:
       - checkout
       - *setup-remote-docker
       - run: *containerize
+workflows:
+  version: 2.1
+  build-containerize-push:
+    jobs:
+      - build
