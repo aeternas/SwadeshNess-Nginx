@@ -11,7 +11,7 @@ aliases:
       docker_layer_caching: true
 version: 2.1
 jobs:
-  build:
+  build-containerize-push:
     docker:
       - image: circleci/golang:1.11
     steps:
@@ -22,4 +22,4 @@ workflows:
   version: 2.1
   build-containerize-push:
     jobs:
-      - build
+      - build-containerize-push
