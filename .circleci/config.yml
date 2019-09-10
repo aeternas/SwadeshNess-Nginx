@@ -13,7 +13,7 @@ version: 2.1
 jobs:
   build-containerize-push:
     docker:
-      - image: circleci/golang
+      - image: circleci/golang:$GOLANG_VERSION
     steps:
       - checkout
       - *setup-remote-docker
