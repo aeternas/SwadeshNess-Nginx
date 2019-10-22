@@ -8,7 +8,7 @@ aliases:
       docker push aeternas/swadeshness-nginx:$CIRCLE_BRANCH
   - &setup-remote-docker
     setup_remote_docker:
-      docker_layer_caching: true
+      docker_layer_caching: false
 version: 2.1
 jobs:
   build-containerize-push:
