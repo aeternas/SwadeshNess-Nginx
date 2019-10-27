@@ -6,6 +6,10 @@ aliases:
       docker login -u $DOCKER_USERNAME --password-stdin < docker_passwd && rm docker_passwd && \
       docker build -t aeternas/swadeshness-nginx:$CIRCLE_BRANCH . && \
       docker push aeternas/swadeshness-nginx:$CIRCLE_BRANCH
+      if [[ $CIRCLE_BRANCH == "master" ]]; then
+        docker tag aeternas/swadeshness-nginx:master aeternas/swadeshness-nginx:latest && \
+        docker push aeternas/swadeshness-nginx:latest
+      fi
   - &setup-remote-docker
     setup_remote_docker:
       docker_layer_caching: false
