@@ -1,4 +1,10 @@
 aliases:
+  - &git-checkout
+    name: Checkout
+    command: |
+      mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+      git clone --depth 1 -b $CIRCLE_BRANCH $CIRCLE_REPOSITORY_URL ./ && \
+      git checkout $CIRCLE_SHA1
   - &containerize
     name: Containerize
     command: |
@@ -19,7 +25,7 @@ jobs:
     docker:
       - image: circleci/golang:$GOLANG_VERSION
     steps:
-      - checkout
+      - run: *git-checkout
       - *setup-remote-docker
       - run: *containerize
 workflows:
