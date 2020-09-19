@@ -25,6 +25,7 @@ version: 2.1
 jobs:
   build-containerize-push:
     docker: *golang-docker-image
+    resource_class: small
     steps:
       - run: *git-checkout
       - *setup-remote-docker
